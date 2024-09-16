@@ -15,6 +15,14 @@ The **Fast Weather Info** plugin allows WordPress users to easily display weathe
 - **Admin Control**: Customize widget settings, including data type, provider, and cache settings.
 - **Email Alerts for Rain**: Notify the admin when there’s a high probability of rain.
 
+
+## Source Code (Developer Guide)
+
+### Installion
+'gh repo clone mhrubel/fast-weather-info'
+'composer install'
+'npm install'
+
 ## Shortcode Usage
 
 To display weather information, use the following shortcode:

@@ -1,0 +1,56 @@
+# Copyright (C) 2024 Mahamudul Hasan Rubel
+# This file is distributed under the same license as the Fast Weather Info plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Fast Weather Info 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fast-weather-info\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-16T11:16:35+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: fast-weather-info\n"
+
+#. Plugin Name of the plugin
+#: E:\xampp\htdocs\weather\wp-content\plugins\fast-weather-info\fast-weather-info.php
+msgid "Fast Weather Info"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: E:\xampp\htdocs\weather\wp-content\plugins\fast-weather-info\fast-weather-info.php
+msgid "https://github.com/mhrubel/fast-weather-info"
+msgstr ""
+
+#. Description of the plugin
+#: E:\xampp\htdocs\weather\wp-content\plugins\fast-weather-info\fast-weather-info.php
+msgid "A simple WordPress plugin to display live weather info based on user location."
+msgstr ""
+
+#. Author of the plugin
+#: E:\xampp\htdocs\weather\wp-content\plugins\fast-weather-info\fast-weather-info.php
+msgid "Mahamudul Hasan Rubel"
+msgstr ""
+
+#. Author URI of the plugin
+#: E:\xampp\htdocs\weather\wp-content\plugins\fast-weather-info\fast-weather-info.php
+msgid "https://mhr.ractstudio.com/"
+msgstr ""
+
+#: app/Helpers/WeatherWidget.php:13
+#: app/Helpers/WeatherWidget.php:26
+#: app/Helpers/WeatherWidget.php:133
+#: build-production/app/Helpers/WeatherWidget.php:13
+#: build-production/app/Helpers/WeatherWidget.php:26
+#: build-production/app/Helpers/WeatherWidget.php:133
+msgid "Weather Info"
+msgstr ""
+
+#: app/Helpers/WeatherWidget.php:14
+#: app/Helpers/WeatherWidget.php:27
+#: build-production/app/Helpers/WeatherWidget.php:14
+#: build-production/app/Helpers/WeatherWidget.php:27
+msgid "A widget to display weather information."
+msgstr ""

@@ -1,0 +1,17 @@
+<div class="current-weather">
+    <h2>Current Weather in {{ resolvedAddress }}</h2>
+    <p><strong>Timezone:</strong> {{ timezone }}</p>
+    <p><strong>Date:</strong> {{ datetime }}</p>
+    <ul>
+        <li><strong>Temperature:</strong> {{ temp }} °{{ unit }}</li>
+        <li><strong>Feels Like:</strong> {{ feelslike }} °{{ unit }}</li>
+        <li><strong>Humidity:</strong> {{ currentConditions.humidity }}%</li>
+        <li><strong>Precipitation:</strong> {{ currentConditions.precip }} mm</li>
+        <li><strong>Wind Speed:</strong> {{ currentConditions.windspeed }} km/h</li>
+        <li><strong>Pressure:</strong> {{ currentConditions.pressure }} hPa</li>
+        <li><strong>Visibility:</strong> {{ currentConditions.visibility }} km</li>
+        <li><strong>Conditions:</strong> {{ currentConditions.conditions }}</li>
+        <li><strong>Cloud Cover:</strong> {{ currentConditions.cloudcover }}%</li>
+        <li><strong>UV Index:</strong> {{ currentConditions.uvindex }}</li>
+    </ul>
+</div>

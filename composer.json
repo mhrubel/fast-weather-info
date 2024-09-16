@@ -1,0 +1,43 @@
+{
+    "name": "wpdrill/framework",
+    "description": "A WordPress Plugin",
+    "type": "wordpress-plugin",
+    "version": "dev-master",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Nahid Bin Azhar",
+            "email": "nahid.dns@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4",
+        "nahid/apiz": "dev-master",
+        "wpdrill/core": "dev-master"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "FastWeatherInfo\\": "app/"
+        },
+        "files": [
+            "app/Utilities/helpers.php"
+        ]
+    },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+        "symfony/var-dumper": "^5.4",
+        "phpunit/phpunit": "10.*"
+    },
+   "repositories": [
+     {
+       "type": "vcs",
+       "url": "https://github.com/WPDrill/core.git"
+     }
+   ]
+}

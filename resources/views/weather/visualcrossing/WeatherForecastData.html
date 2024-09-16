@@ -1,0 +1,21 @@
+<!-- Weather Forecast -->
+<div class="weather-forecast">
+    <h2>Weather in {{ resolvedAddress }}</h2>
+    <p><strong>Timezone:</strong> {{ timezone }}</p>
+    <p><strong>Date:</strong> {{ datetime }}</p>
+    <h3>Weather Forecast ({{ days|length }} days)</h3>
+    {% for day in days %}
+    <div class="forecast-day">
+        <h4>{{ day.datetime }}</h4>
+        <ul>
+            <li><strong>Max Temp:</strong> {{ day.tempmax }} °{{ unit }}</li>
+            <li><strong>Min Temp:</strong> {{ day.tempmin }} °{{ unit }}</li>
+            <li><strong>Conditions:</strong> {{ day.conditions }}</li>
+            <li><strong>Precipitation:</strong> {{ day.precip }} mm ({{ day.precipprob }}% chance)</li>
+            <li><strong>Wind Speed:</strong> {{ day.windspeed }} km/h</li>
+            <li><strong>Cloud Cover:</strong> {{ day.cloudcover }}%</li>
+            <li><strong>Pressure:</strong> {{ day.pressure }} hPa</li>
+        </ul>
+    </div>
+    {% endfor %}
+</div>

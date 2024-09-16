@@ -1,0 +1,19 @@
+<div class="weather-all">
+    <h2>Weather Information for {{ location }}</h2>
+    <div class="current-weather">
+        <h3>Current Weather</h3>
+        <p>Temperature: {{ current.temp }}°{{ unit }}</p>
+        <p>Description: {{ current.description }}</p>
+    </div>
+    <div class="forecast">
+        <h3>Weather Forecast</h3>
+        <ul>
+            <li>{{ date }}: {{ temp }}°{{ unit }} - {{ description }}</li>
+        </ul>
+    </div>
+    <div class="sun-info">
+        <h3>Sunrise and Sunset</h3>
+        <p>Sunrise: {{ sun.sunrise }}</p>
+        <p>Sunset: {{ sun.sunset }}</p>
+    </div>
+</div>

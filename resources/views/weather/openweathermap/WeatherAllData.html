@@ -1,0 +1,49 @@
+<div class="weather-all-data">
+    <h2>Complete Weather Data for {{ resolvedAddress }}</h2>
+
+    <!-- Current Weather -->
+    <div class="current-weather">
+        <h3>Current Weather</h3>
+        <ul>
+            <li><strong>Temperature:</strong> {{ currentConditions.temp }} °C</li>
+            <li><strong>Feels Like:</strong> {{ currentConditions.feelslike }} °C</li>
+            <li><strong>Humidity:</strong> {{ currentConditions.humidity }}%</li>
+            <li><strong>Precipitation:</strong> {{ currentConditions.precip }} mm</li>
+            <li><strong>Wind Speed:</strong> {{ currentConditions.windspeed }} km/h</li>
+            <li><strong>Pressure:</strong> {{ currentConditions.pressure }} hPa</li>
+            <li><strong>Visibility:</strong> {{ currentConditions.visibility }} km</li>
+            <li><strong>Conditions:</strong> {{ currentConditions.conditions }}</li>
+            <li><strong>Cloud Cover:</strong> {{ currentConditions.cloudcover }}%</li>
+            <li><strong>UV Index:</strong> {{ currentConditions.uvindex }}</li>
+        </ul>
+    </div>
+
+    <!-- Sunrise & Sunset -->
+    <div class="sunrise-sunset">
+        <h3>Sunrise and Sunset</h3>
+        <ul>
+            <li><strong>Sunrise:</strong> {{ currentConditions.sunrise }}</li>
+            <li><strong>Sunset:</strong> {{ currentConditions.sunset }}</li>
+            <li><strong>Moon Phase:</strong> {{ currentConditions.moonphase }}</li>
+        </ul>
+    </div>
+
+    <!-- Weather Forecast -->
+    <div class="weather-forecast">
+        <h3>Weather Forecast</h3>
+        {% for day in days %}
+        <div class="forecast-day">
+            <h4>{{ day.datetime }}</h4>
+            <ul>
+                <li><strong>Max Temp:</strong> {{ day.tempmax }} °C</li>
+                <li><strong>Min Temp:</strong> {{ day.tempmin }} °C</li>
+                <li><strong>Conditions:</strong> {{ day.conditions }}</li>
+                <li><strong>Precipitation:</strong> {{ day.precip }} mm ({{ day.precipprob }}% chance)</li>
+                <li><strong>Wind Speed:</strong> {{ day.windspeed }} km/h</li>
+                <li><strong>Cloud Cover:</strong> {{ day.cloudcover }}%</li>
+                <li><strong>Pressure:</strong> {{ day.pressure }} hPa</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>

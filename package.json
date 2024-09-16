@@ -7,12 +7,9 @@
   "private": true,
   "scripts": {
     "translate": "wp i18n make-pot . languages/fast-weather-info.pot --exclude=node_modules --allow-root",
-    "watch": "webpack --watch --progress",
-    "dev-build": "npm run translate && webpack --mode development",
-    "build": "npm run translate && webpack --mode production",
-    "watch-grunt": "grunt watch",
-    "dev-build-grunt": "npm run translate && grunt build-dev",
-    "build-grunt": "npm run translate && grunt build"
+    "watch": "grunt watch",
+    "dev-build": "npm run translate && grunt build-dev",
+    "build": "npm run translate && grunt build"
   },
   "dependencies": {
     "@npmcli/fs": "^3.1.1",

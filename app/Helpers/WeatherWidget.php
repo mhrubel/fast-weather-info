@@ -40,21 +40,21 @@ class WeatherWidget extends \WP_Widget
         if (is_admin()) {
             return; // Prevent fetching weather data in admin
         }
-    
+
         // Extract parameters from block editor attributes
         $location = $attributes['location'] ?? 'New York';
-        $unit = $attributes['unit'] ?? 'metric';
+        $unit = $attributes['unit'] ?? 'metric'; // Default to 'metric'
         $days = $attributes['days'] ?? 7;
-        $provider = $attributes['provider'] ?? 'visualcrossing'; // Default provider
-        $cacheExpiry = $attributes['cache_expiry'] ?? 3600; // Default cache expiry (1 hour)
+        $provider = $attributes['provider'] ?? 'visualcrossing';
+        $cacheExpiry = $attributes['cache_expiry'] ?? 60; // Default cache expiry (1 hour)
         $dataType = $attributes['data'] ?? 'current'; // Default data type
-    
+
         // Fetch API key and cache expiry
         $apiKey = $this->getApiKey($provider);
-    
+
         // Use WeatherProviderManager to get the appropriate provider instance
         $weatherProvider = WeatherProviderManager::getProvider($provider, $apiKey, $cacheExpiry);
-    
+
         // Render weather data using the provider's method based on the data type
         switch ($dataType) {
             case 'current':
@@ -83,27 +83,27 @@ class WeatherWidget extends \WP_Widget
         if (is_admin()) {
             return; // Prevent fetching weather data in admin
         }
-    
+
         // Extract widget settings
         $location = $instance['location'] ?? 'New York';
-        $unit = $instance['unit'] ?? 'metric';
+        $unit = $instance['unit'] ?? 'metric'; // Default to 'metric'
         $days = $instance['days'] ?? 7;
         $provider = $instance['provider'] ?? 'visualcrossing';
-        $cacheExpiry = $instance['cache_expiry'] ?? 3600; // Default cache expiry (1 hour)
+        $cacheExpiry = $instance['cache_expiry'] ?? 60; // Default cache expiry (1 hour)
         $dataType = $instance['data'] ?? 'current'; // Default data type
-    
+
         // Fetch API key and cache expiry
         $apiKey = $this->getApiKey($provider);
-    
+
         // Use WeatherProviderManager to get the appropriate provider instance
         $weatherProvider = WeatherProviderManager::getProvider($provider, $apiKey, $cacheExpiry);
-    
+
         // Output widget title and HTML
         echo $args['before_widget'];
         if (!empty($instance['title'])) {
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
-    
+
         // Render weather data using the provider's method based on the data type
         switch ($dataType) {
             case 'current':
@@ -120,7 +120,7 @@ class WeatherWidget extends \WP_Widget
                 echo $weatherProvider->renderAllWeather($location, $unit, $days);
                 break;
         }
-    
+
         echo $args['after_widget'];
     }
 
@@ -132,10 +132,10 @@ class WeatherWidget extends \WP_Widget
         // Retrieve saved values or set default values
         $title = !empty($instance['title']) ? $instance['title'] : __('Weather Info', 'fast-weather-info');
         $location = !empty($instance['location']) ? $instance['location'] : 'New York';
-        $unit = !empty($instance['unit']) ? $instance['unit'] : 'metric';
+        $unit = !empty($instance['unit']) ? $instance['unit'] : 'metric'; // Default to 'metric'
         $days = !empty($instance['days']) ? $instance['days'] : 7;
         $provider = !empty($instance['provider']) ? $instance['provider'] : 'visualcrossing';
-        $cacheExpiry = !empty($instance['cache_expiry']) ? (int)$instance['cache_expiry'] : 3600; // Default cache expiry
+        $cacheExpiry = !empty($instance['cache_expiry']) ? (int)$instance['cache_expiry'] : 60; // Default cache expiry
         $dataType = !empty($instance['data']) ? $instance['data'] : 'current'; // Default data type
 
         // Render the admin form
@@ -156,7 +156,7 @@ class WeatherWidget extends \WP_Widget
             </select>
         </p>
         <p>
-        <label for="<?php echo $this->get_field_id('data'); ?>"><?php _e('Data Type:'); ?></label>
+            <label for="<?php echo $this->get_field_id('data'); ?>"><?php _e('Data Type:'); ?></label>
             <select id="<?php echo $this->get_field_id('data'); ?>" name="<?php echo $this->get_field_name('data'); ?>">
                 <option value="current" <?php selected($dataType, 'current'); ?>><?php _e('Current Weather'); ?></option>
                 <option value="forecast" <?php selected($dataType, 'forecast'); ?>><?php _e('Forecast Weather'); ?></option>
@@ -177,7 +177,7 @@ class WeatherWidget extends \WP_Widget
             </select>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('cache_expiry'); ?>"><?php _e('Cache Expiry (seconds):'); ?></label>
+            <label for="<?php echo $this->get_field_id('cache_expiry'); ?>"><?php _e('Cache Expiry (minutes):'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('cache_expiry'); ?>" name="<?php echo $this->get_field_name('cache_expiry'); ?>" type="number" value="<?php echo esc_attr($cacheExpiry); ?>">
         </p>
         <?php
@@ -191,11 +191,11 @@ class WeatherWidget extends \WP_Widget
         $instance['title'] = (!empty($new_instance['title'])) ? sanitize_text_field($new_instance['title']) : '';
         $instance['location'] = (!empty($new_instance['location'])) ? sanitize_text_field($new_instance['location']) : '';
         $instance['unit'] = (!empty($new_instance['unit'])) ? sanitize_text_field($new_instance['unit']) : 'metric';
-        $instance['days'] = (!empty($new_instance['days'])) ? (int) $new_instance['days'] : 7;
+        $instance['days'] = (!empty($new_instance['days'])) ? (int)$new_instance['days'] : 7;
         $instance['provider'] = (!empty($new_instance['provider'])) ? sanitize_text_field($new_instance['provider']) : 'visualcrossing';
-        $instance['cache_expiry'] = (!empty($new_instance['cache_expiry'])) ? (int) $new_instance['cache_expiry'] : 3600;
+        $instance['cache_expiry'] = (!empty($new_instance['cache_expiry'])) ? (int)$new_instance['cache_expiry'] : 3600;
         $instance['data'] = (!empty($new_instance['data'])) ? sanitize_text_field($new_instance['data']) : 'current';
-    
+
         return $instance;
     }
 

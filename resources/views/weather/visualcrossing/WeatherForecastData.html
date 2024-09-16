@@ -2,7 +2,7 @@
 <div class="weather-forecast">
     <h2>Weather in {{ resolvedAddress }}</h2>
     <p><strong>Timezone:</strong> {{ timezone }}</p>
-    <p><strong>Date:</strong> {{ datetime }}</p>
+    <p><strong>Updated:</strong> {{ datetime }}</p>
     <h3>Weather Forecast ({{ days|length }} days)</h3>
     {% for day in days %}
     <div class="forecast-day">

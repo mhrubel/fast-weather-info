@@ -31,7 +31,7 @@ class WeatherShortcodes implements ShortcodeContract
         );
 
         $location = sanitize_text_field($atts['location']);
-        $unit = sanitize_text_field($atts['unit']) === 'imperial' ? 'F' : 'C';
+        $unit = sanitize_text_field($atts['unit']) === 'imperial' ? 'imperial' : 'metric';
         $dataType = sanitize_text_field($atts['data']);
         $days = intval($atts['days']);
         $provider = sanitize_text_field($atts['provider']);

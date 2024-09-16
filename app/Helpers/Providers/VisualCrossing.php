@@ -88,11 +88,9 @@ class VisualCrossing
         // Extract the current conditions
         $current = $data['currentConditions'];
 
-        //var_dump($data);
-    
         // Convert temperature if needed
-        $temperature = $unit === 'C' ? $current['temp'] : (new convertFahrenheit())->convertFahrenheit($current['temp']);
-        $feelslike = $unit === 'C' ? $current['feelslike'] : (new convertFahrenheit())->convertFahrenheit($current['feelslike']);
+        $temperature = $unit === 'metric' ? $current['temp'] : (new convertFahrenheit())->convertFahrenheit($current['temp']);
+        $feelslike = $unit === 'metric' ? $current['feelslike'] : (new convertFahrenheit())->convertFahrenheit($current['feelslike']);
     
         // Render the current weather using the Twig template
         return View::render('weather/visualcrossing/WeatherCurrentData', [
@@ -102,7 +100,7 @@ class VisualCrossing
             'currentConditions' => $current,
             'temp' => $temperature,
             'feelslike' => $feelslike,
-            'unit' => $unit === 'F' ? 'F' : 'C',
+            'unit' => $unit === 'imperial' ? 'F' : 'C',
             'location' => $location
         ]);
     }
@@ -125,16 +123,13 @@ class VisualCrossing
             return '<p>Error fetching weather data.</p>';
         }
         
-        // Add to the JSON data
-        $data['days']['unit'] = $unit === 'F' ? 'F' : 'C';
-
         // Extract the forecast data
         $forecast = array_slice($data['days'], 0, $days);
         
         // Convert temperatures if needed
         foreach ($forecast as &$day) {
-            $day['tempmax'] = $unit === 'C' ? $day['tempmax'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmax']);
-            $day['tempmin'] = $unit === 'C' ? $day['tempmin'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmin']);
+            $day['tempmax'] = $unit === 'metric' ? $day['tempmax'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmax']);
+            $day['tempmin'] = $unit === 'metric' ? $day['tempmin'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmin']);
         }
         
         // Debugging output
@@ -146,7 +141,7 @@ class VisualCrossing
             'datetime' => $data['cacheTime'],
             'timezone' => $data['timezone'],
             'days' => $forecast,
-            'unit' => $unit === 'F' ? 'F' : 'C',
+            'unit' => $unit === 'imperial' ? 'F' : 'C',
             'location' => $location
         ]);
     }
@@ -204,8 +199,8 @@ class VisualCrossing
         $forecast = array_slice($data['days'], 0, $days);
         
         // Adjust temperature based on unit
-        $temperature = $unit === 'C' ? $current['temp'] : (new ConvertFahrenheit())->convertFahrenheit($current['temp']);
-        $feelslike = $unit === 'C' ? $current['feelslike'] : (new ConvertFahrenheit())->convertFahrenheit($current['feelslike']);
+        $temperature = $unit === 'metric' ? $current['temp'] : (new ConvertFahrenheit())->convertFahrenheit($current['temp']);
+        $feelslike = $unit === 'metric' ? $current['feelslike'] : (new ConvertFahrenheit())->convertFahrenheit($current['feelslike']);
         
         // Format sunrise and sunset times
         $sunrise = date('H:i', strtotime($current['sunrise']));
@@ -219,7 +214,7 @@ class VisualCrossing
             'currentConditions' => [
                 'temp' => $temperature,
                 'feelslike' => $feelslike,
-                'unit' => $unit === 'F' ? 'F' : 'C',
+                'unit' => $unit === 'imperial' ? 'F' : 'C',
                 'humidity' => $current['humidity'],
                 'precip' => $current['precip'],
                 'windspeed' => $current['windspeed'],
@@ -235,9 +230,9 @@ class VisualCrossing
             'days' => array_map(function($day) use ($unit) {
                 return [
                     'datetime' => $day['datetime'],
-                    'tempmax' => $unit === 'C' ? $day['tempmax'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmax']),
-                    'tempmin' => $unit === 'C' ? $day['tempmin'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmin']),
-                    'unit' => $unit === 'F' ? 'F' : 'C',
+                    'tempmax' => $unit === 'metric' ? $day['tempmax'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmax']),
+                    'tempmin' => $unit === 'metric' ? $day['tempmin'] : (new ConvertFahrenheit())->convertFahrenheit($day['tempmin']),
+                    'unit' => $unit === 'imperial' ? 'F' : 'C',
                     'conditions' => $day['conditions'],
                     'precip' => $day['precip'],
                     'precipprob' => $day['precipprob'],

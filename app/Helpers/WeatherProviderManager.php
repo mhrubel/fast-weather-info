@@ -19,14 +19,18 @@ class WeatherProviderManager
     }
 
     /**
-     * Fetch weather data for the given location and number of days.
+     * Fetch weather data for the given location, number of days, and unit.
      *
+     * @param string $provider
+     * @param string $apiKey
+     * @param int $cacheExpiry
      * @param string $location
      * @param int $days
+     * @param string $unit
      * @return array
      */
-    public static function getWeatherData($location, $days = 2) {
-        $provider = self::getProvider();
-        return $provider->getWeather($location, $days);
+    public static function getWeatherData($provider, $apiKey, $cacheExpiry, $location, $days = 2, $unit = 'metric') {
+        $providerInstance = self::getProvider($provider, $apiKey, $cacheExpiry);
+        return $providerInstance->getWeather($location, $days, $unit);
     }
 }

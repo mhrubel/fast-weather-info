@@ -17,7 +17,7 @@ The **Fast Weather Info** plugin allows WordPress users to easily display weathe
 
 ## Source Code (Developer Guide)
 
-### Installion
+### Installation
 
 - `gh repo clone mhrubel/fast-weather-info`
 - `composer install`
